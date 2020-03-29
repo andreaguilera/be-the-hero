@@ -5,6 +5,8 @@ const cors = require('cors')
 //importar as rotas
 const routes = require('./routes')
 
+const { errors } = require('celebrate')
+
 
 //criar a aplicação
 const app = express()
@@ -14,6 +16,8 @@ app.use(cors())
 app.use(express.json())
 //informando para a aplicação que vamos utilizar as rotas
 app.use(routes)
+app.use(errors());
+
 
 /**
  * Métodos HTTP:
@@ -35,4 +39,4 @@ app.use(routes)
 
 
 //colocar a aplicação pra rodar na porta 3333
-app.listen(3333)
+module.exports = app
